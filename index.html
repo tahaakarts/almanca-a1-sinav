@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Almanca A1 — Kapitel 1 Sınavı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f3efe6;
+      --ink: #1c2430;
+      --muted: #5c6675;
+      --card: #fffdf8;
+      --line: #d9d2c4;
+      --accent: #1f5c4d;
+      --accent-soft: #e4f0eb;
+      --ok: #1f7a4d;
+      --ok-bg: #e7f6ee;
+      --bad: #b42318;
+      --bad-bg: #fdecea;
+      --pick: #2a4a7a;
+      --pick-bg: #eaf0fa;
+      --shadow: 0 10px 30px rgba(28, 36, 48, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #e8f2ee 0%, transparent 55%),
+        radial-gradient(900px 400px at 100% 0%, #efe8d8 0%, transparent 50%),
+        var(--bg);
+      min-height: 100vh;
+      line-height: 1.45;
+    }
+
+    .wrap {
+      width: min(760px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    header.hero {
+      margin-bottom: 1.5rem;
+    }
+    header.hero h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    header.hero p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.35rem;
+    }
+
+    .start-panel label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .start-panel input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      font: inherit;
+      background: #fff;
+      margin-bottom: 1rem;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0 1.25rem;
+    }
+    .chip {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: none;
+      border-radius: 12px;
+      padding: 0.9rem 1.2rem;
+      font-weight: 650;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      width: 100%;
+    }
+    .btn-primary:hover { filter: brightness(1.05); }
+    .btn-primary:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      width: 100%;
+      margin-top: 0.6rem;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #ebe5d8;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 1rem 0 1.5rem;
+    }
+    .progress-bar > span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #3d8f78);
+      transition: width 0.25s ease;
+    }
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .q {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem 1.1rem 1.1rem;
+      margin-bottom: 0.9rem;
+      background: #fff;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .q.ok { border-color: #8fcead; background: var(--ok-bg); }
+    .q.bad { border-color: #f0b4ae; background: var(--bad-bg); }
+    .q-num {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .q-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+    .opts { display: grid; gap: 0.45rem; }
+    .opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.7rem 0.8rem;
+      cursor: pointer;
+      background: #fffdf9;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .opt:hover { border-color: #b9c6de; }
+    .opt.selected {
+      border-color: var(--pick);
+      background: var(--pick-bg);
+    }
+    .opt.reveal-correct {
+      border-color: var(--ok);
+      background: #dff3e8;
+    }
+    .opt.reveal-wrong {
+      border-color: var(--bad);
+      background: #fbe3e1;
+    }
+    .opt input { margin-top: 0.2rem; accent-color: var(--pick); }
+    .opt span { flex: 1; }
+    .feedback {
+      margin-top: 0.75rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: none;
+    }
+    .q.ok .feedback, .q.bad .feedback { display: block; }
+    .q.ok .feedback { color: var(--ok); }
+    .q.bad .feedback { color: var(--bad); }
+
+    .sticky-actions {
+      position: sticky;
+      bottom: 0.75rem;
+      margin-top: 1rem;
+      background: rgba(255, 253, 248, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 0.85rem;
+      box-shadow: var(--shadow);
+    }
+
+    .result {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .result .score {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2.4rem, 8vw, 3.4rem);
+      margin: 0.2rem 0;
+      color: var(--accent);
+    }
+    .result .sub { color: var(--muted); margin: 0; }
+    .legend {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 1rem 0 0.25rem;
+      font-size: 0.85rem;
+    }
+    .legend i {
+      display: inline-block;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    .hidden { display: none !important; }
+
+    footer.note {
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>Almanca A1 Sınavı</h1>
+      <p>Kapitel 1 — kendini tanıtma, fiiller, diller ve Landeskunde. Çoktan seçmeli. Bitince doğru ve yanlışlarını görürsün.</p>
+    </header>
+
+    <section id="start" class="panel start-panel">
+      <label for="name">Adın (isteğe bağlı)</label>
+      <input id="name" type="text" placeholder="Örn. Elif" maxlength="40" />
+      <div class="meta">
+        <span class="chip">30 soru</span>
+        <span class="chip">Çoktan seçmeli</span>
+        <span class="chip">A1 · Kapitel 1</span>
+      </div>
+      <button class="btn-primary" id="startBtn" type="button">Sınava başla</button>
+    </section>
+
+    <section id="exam" class="hidden">
+      <div class="progress-text">
+        <span id="answeredLabel">0 / 30 işaretlendi</span>
+        <span>Süre sınırı yok</span>
+      </div>
+      <div class="progress-bar"><span id="progressFill"></span></div>
+      <div id="questions"></div>
+      <div class="sticky-actions">
+        <button class="btn-primary" id="submitBtn" type="button" disabled>Sınavı bitir ve sonuçları gör</button>
+      </div>
+    </section>
+
+    <section id="results" class="hidden">
+      <div class="panel result">
+        <p class="sub" id="resultName"></p>
+        <p class="score" id="scoreText">0/30</p>
+        <p class="sub" id="scorePct"></p>
+        <div class="legend">
+          <span><i style="background:var(--ok)"></i>Doğru</span>
+          <span><i style="background:var(--bad)"></i>Yanlış</span>
+          <span><i style="background:var(--pick)"></i>Senin işaretin</span>
+        </div>
+        <button class="btn-ghost" id="retryBtn" type="button">Tekrar çöz</button>
+      </div>
+      <div id="review"></div>
+    </section>
+
+    <footer class="note">German Language · Kozminski · A1 Kapitel 1</footer>
+  </div>
+
+  <script>
+    const QUESTIONS = [
+      {
+        q: "Ich _____ Elif. (heißen)",
+        options: ["heißt", "heiße", "heißen", "bin"],
+        answer: 1
+      },
+      {
+        q: "Wie _____ du?",
+        options: ["heißen", "heiße", "heißt", "bist"],
+        answer: 2
+      },
+      {
+        q: "Wie _____ Sie? (siz / resmi)",
+        options: ["heißt", "heiße", "heißen", "bist"],
+        answer: 2
+      },
+      {
+        q: "Ich _____ Studentin. (sein)",
+        options: ["bist", "ist", "bin", "sind"],
+        answer: 2
+      },
+      {
+        q: "Du _____ Student.",
+        options: ["bin", "bist", "ist", "seid"],
+        answer: 1
+      },
+      {
+        q: "Herr Heinemann _____ Informatiker.",
+        options: ["bin", "bist", "ist", "sind"],
+        answer: 2
+      },
+      {
+        q: "Otto _____ aus Deutschland. (kommen)",
+        options: ["komme", "kommst", "kommt", "kommen"],
+        answer: 2
+      },
+      {
+        q: "Ich _____ in Warschau. (wohnen)",
+        options: ["wohnt", "wohnst", "wohne", "wohnen"],
+        answer: 2
+      },
+      {
+        q: "Sie (o, 3. tekil) _____ in Wien.",
+        options: ["wohne", "wohnst", "wohnt", "wohnen"],
+        answer: 2
+      },
+      {
+        q: "Was _____ du? (studieren)",
+        options: ["studiere", "studierst", "studiert", "studieren"],
+        answer: 1
+      },
+      {
+        q: "sein fiilinin doğru çekimi hangisi?",
+        options: ["ich bist", "ich bin", "ich ist", "ich sein"],
+        answer: 1
+      },
+      {
+        q: "Wir _____ Studenten. (sein)",
+        options: ["bin", "bist", "ist", "sind"],
+        answer: 3
+      },
+      {
+        q: "\"Adım Franziska Binder.\" Almancası?",
+        options: ["Ich bin Franziska Binder.", "Ich heiße Franziska Binder.", "Ich wohne Franziska Binder.", "Ich spreche Franziska Binder."],
+        answer: 1
+      },
+      {
+        q: "\"Varşova'da yaşıyorum.\" Almancası?",
+        options: ["Ich komme in Warschau.", "Ich bin in Warschau.", "Ich wohne in Warschau.", "Ich heiße in Warschau."],
+        answer: 2
+      },
+      {
+        q: "\"Ana dilim Türkçe.\" Almancası?",
+        options: ["Ich spreche Muttersprache Türkisch.", "Meine Muttersprache ist Türkisch.", "Ich heiße Türkisch.", "Türkisch bin ich Muttersprache."],
+        answer: 1
+      },
+      {
+        q: "\"İngilizce ve Lehçe de konuşuyorum.\" Almancası?",
+        options: ["Ich lese auch Englisch und Polnisch.", "Ich spiele auch Englisch und Polnisch.", "Ich spreche auch Englisch und Polnisch.", "Ich wohne auch Englisch und Polnisch."],
+        answer: 2
+      },
+      {
+        q: "\"Kitap okumayı severim.\" Almancası?",
+        options: ["Ich spiele gern Bücher.", "Ich lese gern Bücher.", "Ich spreche gern Bücher.", "Ich heiße gern Bücher."],
+        answer: 1
+      },
+      {
+        q: "Polen → dil?",
+        options: ["Polnisch", "Polisch", "Polishisch", "Polenisch"],
+        answer: 0
+      },
+      {
+        q: "die Türkei → dil?",
+        options: ["Türkeiisch", "Türkisch", "Turcisch", "Turkish"],
+        answer: 1
+      },
+      {
+        q: "Großbritannien → dil?",
+        options: ["Britisch", "Englisch", "Großbritannisch", "UK-isch"],
+        answer: 1
+      },
+      {
+        q: "Japan → dil?",
+        options: ["Japansch", "Japanesisch", "Japanisch", "Nihongoisch"],
+        answer: 2
+      },
+      {
+        q: "Russland → dil?",
+        options: ["Russisch", "Russlandisch", "Rusisch", "Russianisch"],
+        answer: 0
+      },
+      {
+        q: "Griechenland → dil?",
+        options: ["Griechenisch", "Griechisch", "Grikisch", "Hellensch"],
+        answer: 1
+      },
+      {
+        q: "Ungarn → dil?",
+        options: ["Ungarisch", "Ungarnisch", "Magyarisch", "Hungarisch"],
+        answer: 0
+      },
+      {
+        q: "Deutschland hat 82,4 Millionen _____.",
+        options: ["Kantone", "Bundesländer", "Einwohner", "Hauptstädte"],
+        answer: 2
+      },
+      {
+        q: "Die _____ von Deutschland ist Berlin.",
+        options: ["Amtssprache", "Republik", "Hauptstadt", "Kantone"],
+        answer: 2
+      },
+      {
+        q: "Österreich hat neun _____.",
+        options: ["Kantone", "Bundesländer", "Einwohner", "Hauptstädte"],
+        answer: 1
+      },
+      {
+        q: "Seit 1918 ist Österreich eine _____.",
+        options: ["Hauptstadt", "Amtssprache", "Republik", "Kanton"],
+        answer: 2
+      },
+      {
+        q: "Die _____ in Österreich ist Deutsch.",
+        options: ["Hauptstadt", "Amtssprache", "Republik", "Einwohner"],
+        answer: 1
+      },
+      {
+        q: "Die Schweiz hat 26 _____.",
+        options: ["Bundesländer", "Kantone", "Republiken", "Hauptstädte"],
+        answer: 1
+      }
+    ];
+
+    const startEl = document.getElementById("start");
+    const examEl = document.getElementById("exam");
+    const resultsEl = document.getElementById("results");
+    const questionsEl = document.getElementById("questions");
+    const reviewEl = document.getElementById("review");
+    const submitBtn = document.getElementById("submitBtn");
+    const answeredLabel = document.getElementById("answeredLabel");
+    const progressFill = document.getElementById("progressFill");
+
+    let selections = Array(QUESTIONS.length).fill(null);
+
+    function updateProgress() {
+      const n = selections.filter((x) => x !== null).length;
+      answeredLabel.textContent = `${n} / ${QUESTIONS.length} işaretlendi`;
+      progressFill.style.width = `${(n / QUESTIONS.length) * 100}%`;
+      submitBtn.disabled = n < QUESTIONS.length;
+      submitBtn.textContent = n < QUESTIONS.length
+        ? `Sınavı bitir (${n}/${QUESTIONS.length})`
+        : "Sınavı bitir ve sonuçları gör";
+    }
+
+    function renderExam() {
+      questionsEl.innerHTML = QUESTIONS.map((item, qi) => `
+        <article class="q" data-q="${qi}">
+          <div class="q-num">Soru ${qi + 1}</div>
+          <div class="q-text">${item.q}</div>
+          <div class="opts">
+            ${item.options.map((opt, oi) => `
+              <label class="opt" data-o="${oi}">
+                <input type="radio" name="q${qi}" value="${oi}" />
+                <span>${opt}</span>
+              </label>
+            `).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      questionsEl.querySelectorAll(".opt input").forEach((input) => {
+        input.addEventListener("change", () => {
+          const qi = Number(input.name.slice(1));
+          const oi = Number(input.value);
+          selections[qi] = oi;
+          const article = questionsEl.querySelector(`[data-q="${qi}"]`);
+          article.querySelectorAll(".opt").forEach((el) => el.classList.remove("selected"));
+          input.closest(".opt").classList.add("selected");
+          updateProgress();
+        });
+      });
+
+      updateProgress();
+    }
+
+    function grade() {
+      let correct = 0;
+      const details = QUESTIONS.map((item, qi) => {
+        const chosen = selections[qi];
+        const ok = chosen === item.answer;
+        if (ok) correct += 1;
+        return { ...item, chosen, ok, qi };
+      });
+      return { correct, details };
+    }
+
+    function showResults() {
+      const name = document.getElementById("name").value.trim();
+      const { correct, details } = grade();
+      const pct = Math.round((correct / QUESTIONS.length) * 100);
+
+      examEl.classList.add("hidden");
+      resultsEl.classList.remove("hidden");
+      document.getElementById("resultName").textContent = name
+        ? `${name}, sonucun:`
+        : "Sonucun:";
+      document.getElementById("scoreText").textContent = `${correct}/${QUESTIONS.length}`;
+      document.getElementById("scorePct").textContent =
+        pct >= 80 ? `Harika — %${pct}` :
+        pct >= 60 ? `İyi — %${pct}. Biraz daha tekrar et.` :
+        ` %${pct}. Özeti tekrar edip bir kez daha çöz.`;
+
+      reviewEl.innerHTML = details.map((d) => {
+        const chosenText = d.chosen === null ? "—" : d.options[d.chosen];
+        const correctText = d.options[d.answer];
+        return `
+          <article class="q ${d.ok ? "ok" : "bad"}">
+            <div class="q-num">Soru ${d.qi + 1} · ${d.ok ? "Doğru" : "Yanlış"}</div>
+            <div class="q-text">${d.q}</div>
+            <div class="opts">
+              ${d.options.map((opt, oi) => {
+                let cls = "opt";
+                if (oi === d.answer) cls += " reveal-correct";
+                if (oi === d.chosen && oi !== d.answer) cls += " reveal-wrong";
+                if (oi === d.chosen) cls += " selected";
+                return `<div class="${cls}"><span>${opt}</span></div>`;
+              }).join("")}
+            </div>
+            <div class="feedback">
+              ${d.ok
+                ? "Doğru!"
+                : `Senin işaretin: <em>${chosenText}</em> · Doğru cevap: <em>${correctText}</em>`}
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.getElementById("startBtn").addEventListener("click", () => {
+      selections = Array(QUESTIONS.length).fill(null);
+      startEl.classList.add("hidden");
+      resultsEl.classList.add("hidden");
+      examEl.classList.remove("hidden");
+      renderExam();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    submitBtn.addEventListener("click", () => {
+      if (selections.some((x) => x === null)) return;
+      showResults();
+    });
+
+    document.getElementById("retryBtn").addEventListener("click", () => {
+      selections = Array(QUESTIONS.length).fill(null);
+      resultsEl.classList.add("hidden");
+      examEl.classList.remove("hidden");
+      renderExam();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
